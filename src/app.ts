@@ -14,7 +14,7 @@ const BOT_TOKEN = process.env.BOT_TOKEN || 'qwerty'
 class Bot {
     bot: Telegraf<IBotContext>
     commands: Command[] = []
-    constructor(private readonly configService: IConfigService){
+    constructor(){
         this.bot = new Telegraf<IBotContext>(BOT_TOKEN)
         this.bot.use(new LocalSession({ database: 'sessions.json'}).middleware())
     }
@@ -29,5 +29,5 @@ class Bot {
     }
 }
 
-const bot = new Bot(new ConfigService())
+const bot = new Bot()
 bot.init()
