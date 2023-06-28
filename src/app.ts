@@ -9,11 +9,13 @@ import { GoDotaCommand } from "./commands/goDotaCommand"
 import LocalSession from "telegraf-session-local"
 import { createServer } from "http"
 
+const BOT_TOKEN = process.env.BOT_TOKEN || 'qwerty'
+
 class Bot {
     bot: Telegraf<IBotContext>
     commands: Command[] = []
     constructor(private readonly configService: IConfigService){
-        this.bot = new Telegraf<IBotContext>(this.configService.get('BOT_TOKEN'))
+        this.bot = new Telegraf<IBotContext>(this.configService.get(BOT_TOKEN))
         this.bot.use(new LocalSession({ database: 'sessions.json'}).middleware())
     }
 
