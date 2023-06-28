@@ -22,7 +22,7 @@ class Bot {
         for(const command of this.commands){
             command.handle()
         }
-        createServer(await this.bot.createWebhook({ domain: "example.com" })).listen(3000);
+        createServer(await this.bot.createWebhook({ domain: "https://wh-bot-alexandr-rubin.vercel.app" })).listen(3000);
         this.bot.launch()
     }
 }
