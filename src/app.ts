@@ -7,6 +7,7 @@ import { IBotContext } from "./contextInterface"
 import { Command } from "./commands/commandClass"
 import { GoDotaCommand } from "./commands/goDotaCommand"
 import LocalSession from "telegraf-session-local"
+import { createServer } from "http"
 
 class Bot {
     bot: Telegraf<IBotContext>
@@ -16,11 +17,12 @@ class Bot {
         this.bot.use(new LocalSession({ database: 'sessions.json'}).middleware())
     }
 
-    init() {
+    async init() {
         this.commands = [new GoDotaCommand(this.bot)]
         for(const command of this.commands){
             command.handle()
         }
+        createServer(await this.bot.createWebhook({ domain: "example.com" })).listen(3000);
         this.bot.launch()
     }
 }
