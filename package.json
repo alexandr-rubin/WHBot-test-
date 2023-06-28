@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "node dist/app.js",
-    "build": "node dist/app.js",
+    "build": "tsc",
     "watch": "tsc --watch"
   },
   "devDependencies": {
