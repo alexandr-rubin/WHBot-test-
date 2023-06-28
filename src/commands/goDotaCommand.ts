@@ -12,10 +12,10 @@ export class GoDotaCommand extends Command {
             const question = "Go Dota?";
 
             const options = ["👍🏻", "👎🏿"];
-            const pollMarkup = Markup.inlineKeyboard([
-                Markup.button.callback(options[0], "yes"),
-                Markup.button.callback(options[1], "no"),
-            ])
+            // const pollMarkup = Markup.inlineKeyboard([
+            //     Markup.button.callback(options[0], "yes"),
+            //     Markup.button.callback(options[1], "no"),
+            // ])
         
             ctx.replyWithPoll(question, options, {
                 is_anonymous: false,

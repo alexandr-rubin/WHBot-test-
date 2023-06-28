@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "node dist/app.js",
-    "build": "tsc --skipLibCheck",
+    "build": "tsc --skipLibCheck node dist/app.js",
     "watch": "tsc --watch"
   },
   "devDependencies": {
