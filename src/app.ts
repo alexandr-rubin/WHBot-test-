@@ -7,27 +7,23 @@ import { IBotContext } from "./contextInterface"
 import { Command } from "./commands/commandClass"
 import { GoDotaCommand } from "./commands/goDotaCommand"
 import LocalSession from "telegraf-session-local"
-import { createServer } from "http"
-
-const BOT_TOKEN = process.env.BOT_TOKEN || 'qwerty'
 
 class Bot {
     bot: Telegraf<IBotContext>
     commands: Command[] = []
-    constructor(){
-        this.bot = new Telegraf<IBotContext>(BOT_TOKEN)
+    constructor(private readonly configService: IConfigService){
+        this.bot = new Telegraf<IBotContext>(this.configService.get('BOT_TOKEN'))
         this.bot.use(new LocalSession({ database: 'sessions.json'}).middleware())
     }
 
-    async init() {
+    init() {
         this.commands = [new GoDotaCommand(this.bot)]
         for(const command of this.commands){
             command.handle()
         }
-        createServer(await this.bot.createWebhook({ domain: "https://wh-bot-alexandr-rubin.vercel.app" })).listen(3000);
         this.bot.launch()
     }
 }
 
-const bot = new Bot()
+const bot = new Bot(new ConfigService())
 bot.init()
