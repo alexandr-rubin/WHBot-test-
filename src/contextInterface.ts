@@ -1,7 +1,6 @@
 import { Context } from "telegraf"
 
 export interface SessionData {
-    vote: boolean
     GoDota: boolean
 }
 
