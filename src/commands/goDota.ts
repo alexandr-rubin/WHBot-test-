@@ -7,16 +7,14 @@ export class GoDotaCommand extends Command {
         super(bot)
     }
     handle(): void {
-        this.bot.command('goDota',ctx => {
+        this.bot.command('godota',ctx => {
             console.log(ctx.session)
             const question = "Go Dota?";
-
             const options = ["👍🏻", "👎🏿"];
             // const pollMarkup = Markup.inlineKeyboard([
             //     Markup.button.callback(options[0], "yes"),
             //     Markup.button.callback(options[1], "no"),
             // ])
-        
             ctx.replyWithPoll(question, options, {
                 is_anonymous: false,
                 allows_multiple_answers: false,

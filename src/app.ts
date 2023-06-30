@@ -5,8 +5,10 @@ import { ConfigService } from "./config/configService"
 import { IConfigService } from "./config/configInterface"
 import { IBotContext } from "./contextInterface"
 import { Command } from "./commands/commandClass"
-import { GoDotaCommand } from "./commands/goDotaCommand"
+import { GoDotaCommand } from "./commands/goDota"
 import LocalSession from "telegraf-session-local"
+import { MobilizationCommand } from "./commands/mobilization"
+import { StikerDrop } from "./commands/stikerDrop"
 
 class Bot {
     bot: Telegraf<IBotContext>
@@ -17,13 +19,14 @@ class Bot {
     }
 
     init() {
-        this.commands = [new GoDotaCommand(this.bot)]
+        this.commands = [new GoDotaCommand(this.bot), new MobilizationCommand(this.bot), new StikerDrop(this.bot)]
         for(const command of this.commands){
             command.handle()
         }
         this.bot.launch()
     }
 }
+
 
 const bot = new Bot(new ConfigService())
 bot.init()
