@@ -1,6 +1,6 @@
 [build]
-  functions = "src/app.ts"
-  command = "netlify-lambda install && mkdir ./public"
+  functions = "dist"
+  command = "yarn build"
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/dist/:splat"
