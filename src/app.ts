@@ -9,10 +9,6 @@ import { GoDotaCommand } from "./commands/goDota"
 import LocalSession from "telegraf-session-local"
 import { MobilizationCommand } from "./commands/mobilization"
 import { StikerDrop } from "./commands/stikerDrop"
-import express, { Router, Request, Response } from "express"
-
-const app = express()
-app.use(express.json())
 
 class Bot {
     bot: Telegraf<IBotContext>
@@ -34,13 +30,3 @@ class Bot {
 const bot = new Bot(new ConfigService())
 
 bot.init()
-
-app.get('/', (req, res) => {
-  return res.send('qwe')
-})
-
-const port = process.env.PORT || 3000
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
