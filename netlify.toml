@@ -1,5 +1,5 @@
 [build]
-  functions = "src"
+  functions = "src/app.ts"
   command = "netlify-lambda install && mkdir ./public"
 [[redirects]]
   from = "/api/*"
