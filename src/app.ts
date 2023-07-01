@@ -29,6 +29,8 @@ class Bot {
 
 const bot = new Bot(new ConfigService())
 
+bot.init()
+
 export const handler = async (event:any, context:any) => {
   try {
     await bot.bot.handleUpdate(JSON.parse(event.body))
@@ -38,5 +40,3 @@ export const handler = async (event:any, context:any) => {
     return { statusCode: 400, body: "This endpoint is meant for bot and telegram communication" }
   }
 }
-
-bot.init()
