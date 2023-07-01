@@ -36,3 +36,13 @@ app.post('/', (req, res) => {
   bot.init()
   res.send('qwe').status(200)
 })
+
+const port = process.env.PORT || 3000
+
+const startApp = async () => {
+  app.listen(port, () => {
+      console.log(`App listening on port ${port}`)
+    })
+}
+
+startApp()
