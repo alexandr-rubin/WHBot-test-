@@ -13,8 +13,6 @@ import express, { Router, Request, Response } from "express"
 
 const app = express()
 app.use(express.json())
-const router = Router({})
-app.use('/', router)
 
 class Bot {
     bot: Telegraf<IBotContext>
@@ -38,17 +36,11 @@ const bot = new Bot(new ConfigService())
 bot.init()
 
 app.get('/', (req, res) => {
-  const bot = new Bot(new ConfigService())
-  bot.init()
-  res.send('qwe').status(200)
+  return res.send('qwe')
 })
 
 const port = process.env.PORT || 3000
 
-const startApp = async () => {
-  app.listen(port, () => {
-      console.log(`App listening on port ${port}`)
-    })
-}
-
-startApp()
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
