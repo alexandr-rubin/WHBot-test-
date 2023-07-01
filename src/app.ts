@@ -31,7 +31,11 @@ class Bot {
     }
 }
 
-app.post('/', (req, res) => {
+const bot = new Bot(new ConfigService())
+
+bot.init()
+
+app.get('/', (req, res) => {
   const bot = new Bot(new ConfigService())
   bot.init()
   res.send('qwe').status(200)
