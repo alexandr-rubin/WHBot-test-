@@ -1,2 +1,7 @@
 [build]
-  command = "yarn start"
+  functions = "yarn build"
+  command = "netlify-lambda install && mkdir ./public"
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/dist/:splat"
+  status = 200
