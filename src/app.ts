@@ -23,14 +23,14 @@ class Bot {
         for(const command of this.commands){
             command.handle()
         }
-        const event = { body: '{"message":"Hello"}' };
-        handler(event, bot)
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        // const event = { body: '{"message":"Hello"}' };
+        // handler(event, bot)
+        //     .then((response) => {
+        //         console.log(response);
+        //     })
+        //     .catch((error) => {
+        //         console.error(error);
+        //     });
         this.bot.launch()
     }
 }
