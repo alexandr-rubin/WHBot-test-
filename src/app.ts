@@ -9,6 +9,7 @@ import { GoDotaCommand } from "./commands/goDota"
 import LocalSession from "telegraf-session-local"
 import { MobilizationCommand } from "./commands/mobilization"
 import { StikerDrop } from "./commands/stikerDrop"
+import { CatchMessage } from "./commands/catchMessage"
 
 class Bot {
     bot: Telegraf<IBotContext>
@@ -17,9 +18,8 @@ class Bot {
         this.bot = new Telegraf<IBotContext>(this.configService.get('BOT_TOKEN'))
         this.bot.use(new LocalSession({ database: 'sessions.json'}).middleware())
     }
-
     init() {
-        this.commands = [new GoDotaCommand(this.bot), new MobilizationCommand(this.bot), new StikerDrop(this.bot)]
+        this.commands = [new GoDotaCommand(this.bot), new MobilizationCommand(this.bot), new StikerDrop(this.bot), new CatchMessage(this.bot)]
         for(const command of this.commands){
             command.handle()
         }
@@ -32,6 +32,6 @@ const bot = new Bot(new ConfigService())
 bot.init()
 
 exports.handler = async (event:any) => {
-  console.log("Received an update from Telegram!", event.body);
-  return { statusCode: 200 };
+    console.log("Received an update from Telegram!", event.body)
+    return { statusCode: 200 }
 };

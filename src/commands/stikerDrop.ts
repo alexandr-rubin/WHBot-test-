@@ -11,8 +11,8 @@ export class StikerDrop extends Command {
             const messageId = ctx.message.message_id
             if(ctx.message.sticker.set_name === 'monke2004'){
                 ctx.deleteMessage(messageId)
+                ctx.sendMessage('Макаки сасат')
             }
-            ctx.sendMessage('Макаки сасат')
         })
     }
 }
