@@ -30,11 +30,9 @@ class Bot {
         this.bot.launch()
 
         app.post('/', (req, res) => {
-          this.bot.handleUpdate(req.body);
-          res.status(200).end();
-        });
-        
-        module.exports = app;
+          this.bot.handleUpdate(req.body)
+          res.status(200).end()
+        })
     }
 }
 
@@ -42,3 +40,5 @@ class Bot {
 const bot = new Bot(new ConfigService())
 
 bot.init()
+
+module.exports = app
