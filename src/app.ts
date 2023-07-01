@@ -29,4 +29,14 @@ class Bot {
 
 
 const bot = new Bot(new ConfigService())
+
+const event = { body: '{"message":"Hello"}' };
+    handler(event, bot)
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
 bot.init()
