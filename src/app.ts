@@ -9,10 +9,12 @@ import { GoDotaCommand } from "./commands/goDota"
 import LocalSession from "telegraf-session-local"
 import { MobilizationCommand } from "./commands/mobilization"
 import { StikerDrop } from "./commands/stikerDrop"
-import express, { Request, Response } from "express"
+import express, { Router, Request, Response } from "express"
 
 const app = express()
 app.use(express.json())
+const router = Router({})
+app.use('/', router)
 
 class Bot {
     bot: Telegraf<IBotContext>
