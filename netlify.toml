@@ -1,5 +1,5 @@
 [build]
-  functions = "dist"
+  functions = "src"
   command = "netlify-lambda install && mkdir ./public"
 [[redirects]]
   from = "/api/*"
