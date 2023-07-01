@@ -29,4 +29,14 @@ class Bot {
 
 const bot = new Bot(new ConfigService())
 
+export const handler = async (event:any, context:any) => {
+  try {
+    await bot.bot.handleUpdate(JSON.parse(event.body))
+    return { statusCode: 200, body: "" }
+  } catch (e) {
+    console.error("error in handler:", e)
+    return { statusCode: 400, body: "This endpoint is meant for bot and telegram communication" }
+  }
+}
+
 bot.init()
