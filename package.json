@@ -4,7 +4,9 @@
   "main": "app.js",
   "license": "MIT",
   "dependencies": {
+    "@types/express": "^4.17.17",
     "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "netlify-lambda": "^2.0.16",
     "telegraf": "^4.12.2",
     "telegraf-session-local": "^2.1.1",

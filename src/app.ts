@@ -9,6 +9,7 @@ import { GoDotaCommand } from "./commands/goDota"
 import LocalSession from "telegraf-session-local"
 import { MobilizationCommand } from "./commands/mobilization"
 import { StikerDrop } from "./commands/stikerDrop"
+import { Request, Response } from "express"
 
 class Bot {
     bot: Telegraf<IBotContext>
@@ -32,6 +33,16 @@ class Bot {
         //         console.error(error);
         //     });
         this.bot.launch()
+
+        module.exports = async (req: Request, res: Response) => {
+            try {
+              await this.bot.handleUpdate(req.body);
+              res.status(200).end();
+            } catch (err) {
+              console.error(err);
+              res.status(500).end();
+            }
+          };
     }
 }
 
