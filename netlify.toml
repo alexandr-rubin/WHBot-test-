@@ -1,5 +1,5 @@
 [build]
-  functions = "yarn build"
+  functions = "dist"
   command = "netlify-lambda install && mkdir ./public"
 [[redirects]]
   from = "/api/*"
