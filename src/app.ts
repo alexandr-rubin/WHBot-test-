@@ -23,20 +23,19 @@ class Bot {
         for(const command of this.commands){
             command.handle()
         }
+        const event = { body: '{"message":"Hello"}' };
+        handler(event, bot)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
         this.bot.launch()
     }
 }
 
 
 const bot = new Bot(new ConfigService())
-
-const event = { body: '{"message":"Hello"}' };
-    handler(event, bot)
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
 
 bot.init()
