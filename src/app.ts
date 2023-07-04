@@ -9,6 +9,9 @@ import { GoDotaCommand } from "./commands/goDota"
 import LocalSession from "telegraf-session-local"
 import { MobilizationCommand } from "./commands/mobilization"
 import { StikerDrop } from "./commands/stikerDrop"
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const BOT_TOKEN = process.env.BOT_TOKEN || 'qwe'
 
